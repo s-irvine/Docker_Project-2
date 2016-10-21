@@ -1,0 +1,17 @@
+mysqlcomp:
+    container_name: mysqlcomp
+    volumes:
+    - /home/ubuntu/dockervol:/tmp/dockervol
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: onetwo
+
+wpresscomp:
+    image: wordpress
+    links:
+    - mysqlcomp:mysql
+    ports: 
+    - "8009:80"
+    environment:
+      WORDPRESS_DB_PASSWORD: onetwo
+      MYSQL_ROOT_PASSWORD: onetwo

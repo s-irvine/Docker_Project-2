@@ -1,0 +1,17 @@
+FROM ubuntu:14.04
+MAINTAINER SamIrvine
+
+USER root
+RUN apt-get update -y
+RUN apt-get install -y default-jre
+RUN apt-get install -y default-jdk
+RUN apt-get install -y git
+RUN apt-get install -y maven
+RUN apt-get install -y nano
+WORKDIR /tmp
+RUN git clone https://github.com/dasanjos/java-WebServer.git
+WORKDIR java-WebServer
+RUN mvn clean package
+WORKDIR target
+ENTRYPOINT java -jar java-WebServer-0.1-jar-with-dependencies.jar 8085
+EXPOSE 8085
