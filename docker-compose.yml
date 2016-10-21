@@ -7,32 +7,32 @@ services:
             dockerfile: DockerfileJen
         ports:
             - "8080:8080"
-        command: bash
+        tty: true
     projir:
         build:
             context: .
             dockerfile: DockerfileJir
         ports:
             - "8081:8080"
-        command: bash
+        tty: true
     pronex:
         build: 
             context: .
             dockerfile: DockerfileNex
         ports:
             - "8082:8081"
-        command: bash
+        tty: true
     prozab:
         build: 
             context: .
             dockerfile: DockerfileZab
         ports:
             - "8083:8080"
-        command: bash
+        tty: true
     proucd:
         build: 
             context: .
             dockerfile: DockerfileUCD
         ports:
             - "8084:8443"
-        command: bash
+        tty: true
