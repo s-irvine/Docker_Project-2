@@ -14,17 +14,20 @@ services:
         ports:
             - "8081:8080"
     pronex:
-        build: context: .
+        build: 
+            context: .
             dockerfile: DockerfileNex
         ports:
             - "8082:8081"        
     prozab:
-        build: context: .
+        build: 
+            context: .
             dockerfile: DockerfileZab
         ports:
             - "8083:8080"
     proucd:
-        build: context: .
+        build: 
+            context: .
             dockerfile: DockerfileUCD
         ports:
             - "8084:8443"
