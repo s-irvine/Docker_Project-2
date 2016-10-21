@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+    projen:
+        build:
+            context: .
+            dockerfile: DockerfileJen
+        ports:
+            - "8080:8080"
+    projir
+        build:
+            context: .
+            dockerfile: DockerfileJir
+        ports:
+            - "8081:8080"
+    pronex
+        build:         
