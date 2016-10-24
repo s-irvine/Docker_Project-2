@@ -9,6 +9,9 @@ RUN wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zab
 RUN dpkg -i zabbix-release_3.0-1+xenial_all.deb
 RUN apt-get -y update
 
+RUN groupadd zabbix
+RUN useradd -g zabbix zabbix
+
 RUN apt-get install -y zabbix-agent
 
 RUN sed -i '93s/.*/Server=prozab-serv:10051/' /etc/zabbix/zabbix_agentd.conf
