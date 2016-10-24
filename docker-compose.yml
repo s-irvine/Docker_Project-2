@@ -39,6 +39,8 @@ services:
             - "10050"
             - "10051"
         tty: true
+        links:
+            - prozab-serv
     proucd:
         build: 
             context: .
