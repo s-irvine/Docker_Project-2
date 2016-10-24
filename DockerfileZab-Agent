@@ -11,7 +11,7 @@ RUN apt-get -y update
 
 RUN apt-get install -y zabbix-agent
 
-RUN sed -i '93sServer=prozab-serv:10051' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '93sServer=prozab-serv\:10051' /etc/zabbix/zabbix_agentd.conf
 RUN sed -i '147sHostname=prozab-serv' /etc/zabbix/zabbix_agentd.conf
 
 #EXPOSE 8083:80
