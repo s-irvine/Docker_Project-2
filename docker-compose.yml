@@ -28,11 +28,16 @@ services:
             dockerfile: DockerfileZab-Serv
         ports:
             - "8083:80"
+            - "10050"
+            - "10051"
         tty: true
     prozab-agent:
         build: 
             context: .
             dockerfile: DockerfileZab-Agent
+        ports:
+            - "10050"
+            - "10051"
         tty: true
     proucd:
         build: 
