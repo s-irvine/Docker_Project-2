@@ -21,9 +21,10 @@ WORKDIR ibm-ucd-agent-install
 RUN sed -i '20s/.*/locked\/agent.jms.remote.host=proucd-serv/' example.agent.install.properties
 RUN cp example.agent.install.properties install.properties
 
-RUN chmod +x install-agent-from-file.sh; sync && ./install-agent-from-file.sh install.properties
+RUN sed -i '30isync' install-agent-from-file.sh && \
+chmod +x install-agent-from-file.sh; sync && ./install-agent-from-file.sh install.properties
 
-#sed -i '16s/.*/chmod +x "opt\/apache-ant-1.8.4\/bin\/ant"/' install-agent-from-file.sh && sed -i '17s/.*/sync/' install-agent-from-file.sh && \
+#sed -i '16s/.*/chmod +x "opt\/apache-ant-1.8.4\/bin\/ant"/' install-agent-from-file.sh && 
 
 #RUN chmod +x opt/apache-ant-1.8.4/bin/ant
 #RUN chmod +x install-agent-from-file.sh
