@@ -43,4 +43,4 @@ RUN service mysql start && sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION
 #EXPOSE 8080
 #EXPOSE 8443
 
-ENTRYPOINT service mysql start && /opt/ibm-ucd/server/bin/server run && bash
+ENTRYPOINT service mysql start && /opt/ibm-ucd/server/bin/server run
