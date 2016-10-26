@@ -23,4 +23,4 @@ RUN cp example.agent.install.properties install.properties
 
 RUN ./install-agent-from-file.sh
 
-ENTRYPOINT /opt/urbancode/ibm-ucdagent/agent start && bash
+ENTRYPOINT sleep 60 && /opt/urbancode/ibm-ucdagent/agent start && bash
