@@ -21,6 +21,7 @@ WORKDIR ibm-ucd-agent-install
 RUN sed -i '20s/.*/locked\/agent.jms.remote.host=proucd-serv/' example.agent.install.properties
 RUN cp example.agent.install.properties install.properties
 
-RUN ./install-agent-from-file.sh install.properties
+RUN sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION}\/bin\/ant"/ s/$/; sync/' install-server.sh && \
+    chmod +x install-server.sh; sync && ./install-agent-from-file.sh install.properties
 
 ENTRYPOINT sleep 60 && /opt/urbancode/ibm-ucdagent/bin/agent start && bash
