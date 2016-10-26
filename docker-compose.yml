@@ -41,10 +41,20 @@ services:
         tty: true
         links:
             - prozab-serv
-    proucd:
+    proucd-serv:
         build: 
             context: .
             dockerfile: DockerfileUCD-Serv
         ports:
             - "8084:8443"
+            - "7918"
+        tty: true
+    proucd-agent:
+        build: 
+            context: .
+            dockerfile: DockerfileUCD-Agent
+        ports:
+            - "7918"
+        links:
+            - proucd-serv
         tty: true
