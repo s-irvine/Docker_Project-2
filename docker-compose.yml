@@ -44,7 +44,7 @@ services:
     proucd:
         build: 
             context: .
-            dockerfile: DockerfileUCD
+            dockerfile: DockerfileUCD-Serv
         ports:
             - "8084:8443"
         tty: true
