@@ -1,0 +1,13 @@
+FROM ubuntu
+MAINTAINER Sam Irvine
+
+USER root
+RUN apt-get update -y && apt-get install -y wget default-jre default-jdk
+
+WORKDIR /opt/
+RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEN2EN/Xa.2/Xb.aFmQQe8PD7-r32ZooMTuFTBQcniXPXOOk6PK_qfzzf4/Xc.CNEN2EN/UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip/Xd./Xf.LPR.F1AZ/Xg.8849264/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.S9i2BXR4yi77-51bVGowVq_9xBk/UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip
+
+RUN apt-get install -y unzip 
+RUN unzip UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip
+
+
