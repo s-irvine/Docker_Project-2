@@ -8,6 +8,13 @@ WORKDIR /opt/
 RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEN2EN/Xa.2/Xb.aFmQQe8PD7-r32ZooMTuFTBQcniXPXOOk6PK_qfzzf4/Xc.CNEN2EN/UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip/Xd./Xf.LPR.F1AZ/Xg.8849264/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.S9i2BXR4yi77-51bVGowVq_9xBk/UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip
 
 RUN apt-get install -y unzip 
-RUN unzip UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip
+RUN mkdir UrbanCode_Deploy
+RUN unzip UCD_AG_Z_OS_ENG_6.2.2_TRIAL.zip -d UrbanCode_Deploy
 
+WORKDIR UrbanCode_Deploy/zipinstall
+RUN unzip ibm-ucd-agent.zip
 
+ENV JAVA_HOME /usr/lib/jvm/default-java
+
+WORKDIR ibm-ucd-agent-install
+RUN sed -i '20s/.*/locked/agent.jms.remote.host=proucd-serv/' /opt/ibm-ucd/server/bin/init/server
