@@ -34,4 +34,4 @@ RUN sed -i "12iListenPort=10051" /etc/zabbix/zabbix_server.conf
 #EXPOSE 10050
 #EXPOSE 10051
 
-ENTRYPOINT  service mysql start && service zabbix-server start && service apache2 start && bash
+ENTRYPOINT  service mysql start && service zabbix-server start && service apache2 start && service zabbix-agent start && bash
