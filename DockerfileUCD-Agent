@@ -17,4 +17,4 @@ RUN unzip ibm-ucd-agent.zip
 ENV JAVA_HOME /usr/lib/jvm/default-java
 
 WORKDIR ibm-ucd-agent-install
-RUN sed -i '20s/.*/locked/agent.jms.remote.host=proucd-serv/' /opt/ibm-ucd/server/bin/init/server
+RUN sed -i '20s/.*/locked\/agent.jms.remote.host=proucd-serv/' /opt/ibm-ucd/server/bin/init/server
