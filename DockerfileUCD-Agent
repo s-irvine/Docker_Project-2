@@ -26,4 +26,4 @@ chmod +x install-agent-from-file.sh; sync && ./install-agent-from-file.sh instal
 
 #sed -i '16s/.*/chmod +x "opt\/apache-ant-1.8.4\/bin\/ant"/' install-agent-from-file.sh && 
 
-ENTRYPOINT sleep 60 && /opt/urbancode/ibm-ucdagent/bin/agent start && bash
+ENTRYPOINT sleep 60 && echo "Starting UCD Agent" && /opt/urbancode/ibm-ucdagent/bin/agent start && bash
