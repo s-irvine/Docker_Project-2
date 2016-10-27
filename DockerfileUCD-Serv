@@ -5,7 +5,7 @@ USER root
 RUN apt-get update -y && apt-get install -y wget default-jre default-jdk
 
 WORKDIR /opt/
-RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEM5EN/Xa.2/Xb.aFmQQe8PD7-qs_TfXneOo96GJPenzgHWZG5yci-HJio/Xc.CNEM5EN/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip/Xd./Xf.LPR.F1AZ/Xg.8840937/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.6VnFW9_sc9CBYP6otRmChl0D5WU/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip
+RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEM5EN/Xa.2/Xb.aFmQQe8PD7-rAwdV7fVwfiUOen_ES0cOQKvU-IaIk6Q/Xc.CNEM5EN/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip/Xd./Xf.LPR.F1AZ/Xg.8850826/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.yw-3y1m9BRyxIwccRYN0w4zXFz4/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zipE_DEPLOY_6.2.2_EN_EVAL.zip/Xd./Xf.LPR.F1AZ/Xg.8840937/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.6VnFW9_sc9CBYP6otRmChl0D5WU/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip
 #RUN tar xvzf latest-unix.tar.gz
 
 
