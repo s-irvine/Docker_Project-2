@@ -2,9 +2,7 @@ FROM ubuntu
 MAINTAINER Sam Irvine
 
 USER root
-RUN apt-get update -y && apt-get install -y wget default-jre default-jdk git maven
-
-RUN apt-get install -y curl unzip
+RUN apt-get update -y && apt-get install -y wget default-jre default-jdk git maven curl unzip
 
 WORKDIR /opt
 
