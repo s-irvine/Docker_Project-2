@@ -6,7 +6,9 @@ RUN apt-get update -y && apt-get install -y wget default-jre default-jdk git mav
 
 RUN apt-get install -y unzip
 
-RUN wget https://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.7.zip
+WORKDIR /opt
 
+RUN wget https://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.7.zip
+RUN unzip apache-groovy-binary-2.4.7.zip
 
 ENTRYPOINT bash
