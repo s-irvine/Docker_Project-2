@@ -4,6 +4,8 @@ MAINTAINER Sam Irvine
 USER root
 RUN apt-get update -y && apt-get install -y wget default-jre default-jdk git maven
 
+RUN apt-get install -y curl
+
 WORKDIR /opt
 
 RUN curl -s get.sdkman.io | bash
