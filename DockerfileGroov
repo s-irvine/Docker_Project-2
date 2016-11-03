@@ -9,7 +9,7 @@ RUN apt-get install -y curl unzip
 WORKDIR /opt
 
 RUN curl -s get.sdkman.io | bash
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh" | bash
+RUN /bin/bash -c 'source "$HOME/.sdkman/bin/sdkman-init.sh"'
 RUN sdk install groovy
 RUN groovy -version | cat
 ENTRYPOINT bash
