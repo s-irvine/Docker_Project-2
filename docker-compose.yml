@@ -1,33 +1,19 @@
 version: '2'
 
 services:
-    projen:
-        build:
+    promysql:
+       build: 
             context: .
-            dockerfile: DockerfileJen
-        ports:
-            - "8080:8080"
-        tty: true
-    projir:
-        build:
-            context: .
-            dockerfile: DockerfileJir
-        ports:
-            - "8081:8080"
-        tty: true
-    pronex:
-        build: 
-            context: .
-            dockerfile: DockerfileNex
-        ports:
-            - "8082:8081"
-        tty: true
+            dockerfile: DockerfileMySQL
+       tty: true
     prozab-serv:
         build: 
             context: .
             dockerfile: DockerfileZab-Serv
         ports:
             - "8083:80"
+        links:
+            - promysql:mysql
         tty: true
     prozab-agent:
         build: 
@@ -35,18 +21,20 @@ services:
             dockerfile: DockerfileZab-Agent
         tty: true
         links:
-            - prozab-serv
+            - prozab-serv:serv
     proucd-serv:
         build: 
             context: .
             dockerfile: DockerfileUCD-Serv
         ports:
             - "8084:8443"
+        links:
+            - promysql:mysql
         tty: true
     proucd-agent:
         build: 
             context: .
             dockerfile: DockerfileUCD-Agent
         links:
-            - proucd-serv
+            - proucd-serv:serv
         tty: true
