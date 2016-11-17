@@ -33,6 +33,6 @@ RUN sed -i "912idate.timezone = "Europe/London"" /etc/php/7.0/apache2/php.ini
 RUN sed -i "12iListenPort=10051" /etc/zabbix/zabbix_server.conf
 
 
-ENTRYPOINT  sleep 60 &&\
+ENTRYPOINT  sleep 10 &&\
             zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -h mysql -P 3306 -uzabbix -proot zabbix &&\
             service zabbix-server start && service apache2 start && service zabbix-agent start && bash
