@@ -1,0 +1,13 @@
+FROM ubuntu
+MAINTAINER Sam Irvine
+
+USER root
+RUN apt-get update -y && apt-get install -y nano
+
+RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
+RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
+RUN apt-get install -y mysql-server libmysql-java
+
+RUN service mysql start && echo "CREATE DATABASE UCD character set utf8 collate utf8_bin;CREATE USER 'UCDu'@'localhost' IDENTIFIED BY 'root';GRANT ALL ON UCD.* TO 'UCDu'@'localhost' WITH GRANT OPTION;" | mysql -uroot -proot
+RUN service mysql start && echo "create database zabbix character set utf8 collate utf8_bin; grant all privileges on zabbix.* to zabbix@localhost identified by 'root';" | mysql -u root -proot
+
