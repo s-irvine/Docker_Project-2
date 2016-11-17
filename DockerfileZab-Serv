@@ -34,5 +34,5 @@ RUN sed -i "12iListenPort=10051" /etc/zabbix/zabbix_server.conf
 
 
 ENTRYPOINT  sleep 60 &&\
-            zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -h mysql -P 3306 -u zabbix -proot zabbix &&\
+            zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -h mysql -P 3306 -uzabbix -proot zabbix &&\
             service zabbix-server start && service apache2 start && service zabbix-agent start && bash
