@@ -14,13 +14,8 @@ RUN useradd -g zabbix zabbix
 
 RUN apt-get install -y zabbix-agent
 
-RUN sed -i '95s/.*/Server=prozab-serv/' /etc/zabbix/zabbix_agentd.conf
-RUN sed -i '136s/.*/ServerActive=prozab-serv/' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '95s/.*/Server=serv/' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '136s/.*/ServerActive=serv/' /etc/zabbix/zabbix_agentd.conf
 #RUN sed -i '147s/.*/Hostname=Zabbix server/' /etc/zabbix/zabbix_agentd.conf
-
-#EXPOSE 8083:80
-#EXPOSE 3306
-#EXPOSE 10050
-#EXPOSE 10051
 
 ENTRYPOINT  service zabbix-agent start && bash
