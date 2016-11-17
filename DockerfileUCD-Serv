@@ -6,12 +6,11 @@ RUN apt-get update -y && apt-get install -y wget default-jre default-jdk
 
 WORKDIR /opt/
 RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEM5EN/Xa.2/Xb.aFmQQe8PD7-rAwdV7fVwfiUOen_ES0cOQKvU-IaIk6Q/Xc.CNEM5EN/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip/Xd./Xf.LPR.F1AZ/Xg.8850826/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.yw-3y1m9BRyxIwccRYN0w4zXFz4/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip
-#RUN tar xvzf latest-unix.tar.gz
 
-
-RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
-RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
-RUN apt-get install -y mysql-server libmysql-java
+#RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
+#RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
+#mysql-server 
+RUN apt-get install -y libmysql-java
 
 RUN service mysql start && echo "CREATE DATABASE UCD character set utf8 collate utf8_bin;CREATE USER 'UCDu'@'localhost' IDENTIFIED BY 'root';GRANT ALL ON UCD.* TO 'UCDu'@'localhost' WITH GRANT OPTION;" | mysql -uroot -proot
 
@@ -24,7 +23,7 @@ RUN echo "nonInteractive=true" >> install.properties
 RUN echo "" >> install.properties
 RUN echo "database.type=mysql" >> install.properties
 RUN echo "server.initial.password=root" >> install.properties
-RUN echo "hibernate.connection.url=jdbc:mysql://localhost:3306/UCD" >> install.properties
+RUN echo "hibernate.connection.url=jdbc:mysql://mysql:3306/UCD" >> install.properties
 RUN echo "hibernate.connection.username=UCDu" >> install.properties
 RUN echo "hibernate.connection.password=root" >> install.properties
 
@@ -35,12 +34,4 @@ RUN service mysql start && sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION
     chmod +x install-server.sh; sync && \
     ./install-server.sh
 
-#RUN sed -i '33s/.*/SERVER_USER=root/' /opt/ibm-ucd/server/bin/init/server
-#RUN sed -i '34s/.*/SERVER_USER=root/' /opt/ibm-ucd/server/bin/init/server
-
-#RUN ln -sf /opt/ibm-ucd/server/bin/init/server /etc/init.d/ibm-ucd-server
-
-#EXPOSE 8080
-#EXPOSE 8443
-
-ENTRYPOINT service mysql start && /opt/ibm-ucd/server/bin/server run
+ENTRYPOINT /opt/ibm-ucd/server/bin/server run
