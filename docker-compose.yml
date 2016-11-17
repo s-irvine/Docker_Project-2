@@ -22,19 +22,19 @@ services:
         tty: true
         links:
             - prozab-serv:serv
-    proucd-serv:
-        build: 
-            context: .
-            dockerfile: DockerfileUCD-Serv
-        ports:
-            - "8084:8443"
-        links:
-            - promysql:mysql
-        tty: true
-    proucd-agent:
-        build: 
-            context: .
-            dockerfile: DockerfileUCD-Agent
-        links:
-            - proucd-serv:serv
-        tty: true
+#    proucd-serv:
+#        build: 
+#            context: .
+#            dockerfile: DockerfileUCD-Serv
+#        ports:
+#            - "8084:8443"
+#        links:
+#            - promysql:mysql
+#        tty: true
+#    proucd-agent:
+#        build: 
+#            context: .
+#            dockerfile: DockerfileUCD-Agent
+#        links:
+#            - proucd-serv:serv
+#        tty: true
