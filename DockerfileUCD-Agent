@@ -18,7 +18,7 @@ RUN unzip ibm-ucd-agent.zip
 ENV JAVA_HOME /usr/lib/jvm/default-java
 
 WORKDIR ibm-ucd-agent-install
-RUN sed -i '20s/.*/locked\/agent.jms.remote.host=proucd-serv/' example.agent.install.properties
+RUN sed -i '20s/.*/locked\/agent.jms.remote.host=serv/' example.agent.install.properties
 RUN cp example.agent.install.properties install.properties
 
 RUN sed -i '30isync' install-agent-from-file.sh && \
