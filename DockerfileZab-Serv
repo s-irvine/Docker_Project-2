@@ -17,8 +17,10 @@ RUN apt-get install -y php libapache2-mod-php php-mcrypt php-mysql php-bcmath ph
 #RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 #RUN apt-get install -y mysql-server
 
-RUN echo "mysql-server mysql-server/root_password password ''" | debconf-set-selections
-RUN echo "mysql-server mysql-server/root_password_again password ''" | debconf-set-selections
+#RUN echo "mysql-server mysql-server/root_password password ''" | debconf-set-selections
+#RUN echo "mysql-server mysql-server/root_password_again password ''" | debconf-set-selections
+
+RUN apt-get install -y mysql-client
 
 RUN apt-get install -y zabbix-server-mysql zabbix-frontend-php zabbix-agent
 
@@ -34,5 +36,5 @@ RUN sed -i "12iListenPort=10051" /etc/zabbix/zabbix_server.conf
 
 
 ENTRYPOINT  sleep 20 &&\
-            zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -h mysql -P 3306 --protocol=tcp -uzabbix -proot zabbix &&\
+            zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -h mysql -P 3306 -uzabbix -proot zabbix &&\
             service zabbix-server start && service apache2 start && service zabbix-agent start && bash
