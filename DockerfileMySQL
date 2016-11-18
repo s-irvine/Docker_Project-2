@@ -9,7 +9,7 @@ RUN echo "mysql-server mysql-server/root_password_again password root" | debconf
 RUN apt-get install -y mysql-server libmysql-java
 
 #RUN service mysql start && echo "CREATE DATABASE UCD character set utf8 collate utf8_bin;CREATE USER 'UCDu'@'mysql' IDENTIFIED BY 'root';GRANT ALL ON UCD.* TO 'UCDu'@'mysql' WITH GRANT OPTION;" | mysql -uroot -proot
-RUN service mysql start && echo "create database zabbix character set utf8 collate utf8_bin; grant all privileges on zabbix.* to zabbix@'prozab-serv' identified by 'root';" | mysql -u root -proot
+RUN service mysql start && echo "create database zabbix character set utf8 collate utf8_bin;CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'root';grant all privileges on zabbix.* to zabbix@'%' identified by 'root';" | mysql -u root -proot
 
 RUN echo "[mysql]" >> /etc/mysql/my.cnf
 RUN echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
